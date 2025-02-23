@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Side Navigation Example</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            font-family: Arial, sans-serif;
+        }
+        .sidenav {
+            height: 100vh;
+            width: 250px;
+            background-color: #f4f4f4;
+            padding-top: 20px;
+            padding-left: 15px;
+            padding-right: 15px;
+            position: fixed;
+        }
+        .sidenav a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 18px;
+            color: #333;
+            display: block;
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+        .sidenav a:hover, .sidenav a.active {
+            background-color: #ddd;
+            color: black;
+        }
+        .content {
+            margin-left: 260px;
+            padding: 20px;
+            width: calc(100% - 260px);
+        }
+        .content-section {
+            display: none;
+        }
+        .content-section.active {
+            display: block;
+        }
+        @media (max-width: 768px) {
+            .sidenav {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+            .sidenav a {
+                float: left;
+                padding: 10px;
+                width: 100%;
+                box-sizing: border-box;
+            }
+            .content {
+                margin-left: 0;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sidenav">
+        <a href="#" class="nav-link" data-target="section-crisis-management"><i class="ri-shield-user-line"></i> Crisis Management</a>
+        <a href="#" class="nav-link" data-target="section-media-relations"><i class="ri-mic-line"></i> Media Relations</a>
+        <a href="#" class="nav-link" data-target="section-pr-programs"><i class="ri-megaphone-line"></i> PR Programs/Campaigns</a>
+        <a href="#" class="nav-link" data-target="section-marketing"><i class="ri-marketing-line"></i> Marketing</a>
+        <a href="#" class="nav-link" data-target="section-public-affairs"><i class="ri-government-line"></i> Public Affairs</a>
+        <a href="#" class="nav-link" data-target="section-corporate-governance"><i class="ri-building-4-line"></i> Corporate Governance</a>
+        <a href="#" class="nav-link" data-target="section-research"><i class="ri-bar-chart-line"></i> Research, Evaluation, & Impact Measurement</a>
+        <a href="#" class="nav-link" data-target="section-social-media"><i class="ri-share-box-line"></i> Social Media Relations</a>
+        <a href="#" class="nav-link" data-target="section-strategic-planning"><i class="ri-compass-4-line"></i> Strategic Planning</a>
+        <a href="#" class="nav-link" data-target="section-influencers"><i class="ri-heart-pulse-line"></i> Influencers & Brand Marketing</a>
+    </div>
+    <div class="content">
+        <div id="section-crisis-management" class="content-section">
+            <h2>Crisis Management</h2>
+            <p>Details about Crisis Management.</p>
+        </div>
+        <div id="section-media-relations" class="content-section">
+            <h2>Media Relations</h2>
+            <p>Details about Media Relations.</p>
+        </div>
+        <div id="section-pr-programs" class="content-section">
+            <h2>PR Programs/Campaigns</h2>
+            <p>Details about PR Programs and Campaigns.</p>
+        </div>
+        <div id="section-marketing" class="content-section">
+            <h2>Marketing</h2>
+            <p>Details about Marketing.</p>
+        </div>
+        <div id="section-public-affairs" class="content-section">
+            <h2>Public Affairs</h2>
+            <p>Details about Public Affairs.</p>
+        </div>
+        <div id="section-corporate-governance" class="content-section">
+            <h2>Corporate Governance</h2>
+            <p>Details about Corporate Governance.</p>
+        </div>
+        <div id="section-research" class="content-section">
+            <h2>Research, Evaluation, & Impact Measurement</h2>
+            <p>Details about Research, Evaluation, and Impact Measurement.</p>
+        </div>
+        <div id="section-social-media" class="content-section">
+            <h2>Social Media Relations</h2>
+            <p>Details about Social Media Relations.</p>
+        </div>
+        <div id="section-strategic-planning" class="content-section">
+            <h2>Strategic Planning</h2>
+            <p>Details about Strategic Planning.</p>
+        </div>
+        <div id="section-influencers" class="content-section">
+            <h2>Influencers & Brand Marketing</h2>
+            <p>Details about Influencers and Brand Marketing.</p>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('.content-section');
+            
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+
+                    // Remove active class from all links
+                    links.forEach(link => link.classList.remove('active'));
+
+                    // Add active class to the clicked link
+                    this.classList.add('active');
+
+                    // Hide all sections
+                    sections.forEach(section => section.classList.remove('active'));
+
+                    // Show the targeted section
+                    const targetSection = document.getElementById(this.dataset.target);
+                    if (targetSection) {
+                        targetSection.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
